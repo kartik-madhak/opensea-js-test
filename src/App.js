@@ -9,9 +9,10 @@ function App(props) {
 
     console.log(seaport)
 
+    // Put your example asset here
     const assetToFetch = {
-        tokenAddress: '0xf43aaa80a8f9de69bc71aea989afceb8db7b690f',
-        tokenId: '639',
+        tokenAddress: '0x88b48f654c30e99bc2e4a1559b4dcf1ad93fa656',
+        tokenId: '75400578612941401867553379846229579034804046475075188611111958234060701040641',
     }
 
     const connect = async () => {
@@ -27,7 +28,8 @@ function App(props) {
             // All account based and signing requests will go through the SignerSubprovider
             providerEngine.addProvider(new MetamaskSubprovider(window.ethereum));
             // Use an RPC provider to route all other requests
-            providerEngine.addProvider(new RPCSubprovider('https://mainnet.infura.io/v3/6fa6dd042a2144769583531cbf907cd5'));
+            // providerEngine.addProvider(new RPCSubprovider('https://testnet.infura.io/v3/6fa6dd042a2144769583531cbf907cd5'));
+            providerEngine.addProvider(new RPCSubprovider('https://rinkeby.infura.io/v3/6fa6dd042a2144769583531cbf907cd5'));
             providerEngine.start();
 
             console.log(providerEngine)
@@ -117,7 +119,7 @@ function App(props) {
 
 
         setTimeout(async () => {
-            const accountAddress = "0xA6B3371390Ac27abE0bc8f23950695eCcE679592"
+            const accountAddress = "0xA6B3371390Ac27abE0bc8f23950695eCcE679592" // Put the buyer's address here, TODO: fetch from metamask extension
             try{
                 const transactionHash = await seaport.fulfillOrder({order, accountAddress})
                 console.log(transactionHash)
